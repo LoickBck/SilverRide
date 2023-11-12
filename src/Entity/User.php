@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Id] // Clé primaire
+    #[ORM\GeneratedValue] // Generer auto increment
+    #[ORM\Column] // Type entier
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]

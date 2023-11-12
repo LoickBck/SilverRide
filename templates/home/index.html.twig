@@ -1,20 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Silver Ride - Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    <div class="Slide" id="#Home">
+    <h1>Bienvenue sur Silver Ride</h1>
+    <p>SilverRide, votre source de voitures de qualité. Découvrez notre sélection exceptionnelle de véhicules d'occasion.</p>
+    </div>
+    <div class="Slide" id="#Service">
+    <h2>Nos Services</h2>
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/loick/Desktop/Projet perso/Garage/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/loick/Desktop/Projet perso/Garage/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+        <li>Vente de voitures d'occasion haut de gamme</li>
+        <li>Service d'entretien et de réparation de qualité</li>
+        <li>Financement flexible pour votre prochain véhicule</li>
     </ul>
-</div>
+    </div>
+    <div class="Slide" id="#Car">
+    <h2>Nos Véhicules</h2>
+    <p>Nous nous engageons à vous offrir des voitures de qualité, un service exceptionnel et des solutions de mobilité fiables. Chez SilverRide, la satisfaction de nos clients est notre priorité absolue.</p>
+    </div>
+    <!-- Ajoutez d'autres éléments de présentation spécifiques à votre garage ici. -->
 {% endblock %}

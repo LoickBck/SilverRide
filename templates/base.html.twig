@@ -1,18 +1,23 @@
-{% extends 'base.html.twig' %}
-
-{% block content %}
-    <h1>Bienvenue sur SilverRide</h1>
-    <p>SilverRide, votre source de voitures de qualité. Découvrez notre sélection exceptionnelle de véhicules d'occasion.</p>
-
-    <h2>Nos services</h2>
-    <ul>
-        <li>Vente de voitures d'occasion haut de gamme</li>
-        <li>Service d'entretien et de réparation de qualité</li>
-        <li>Financement flexible pour votre prochain véhicule</li>
-    </ul>
-
-    <h2>Nos valeurs</h2>
-    <p>Nous nous engageons à vous offrir des voitures de qualité, un service exceptionnel et des solutions de mobilité fiables. Chez SilverRide, la satisfaction de nos clients est notre priorité absolue.</p>
-    
-    <!--éléments de présentation du garage -->
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <!-- feuilles de styles -->
+        {% block stylesheets %}
+        <link rel="stylesheet" href="assets/styles/app.css">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        <!-- fichiers js -->
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% include "partials/header.html.twig" %}
+        {% block body %}{% endblock %}
+        {% include "partials/footer.html.twig" %}
+    </body>
+</html>

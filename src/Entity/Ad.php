@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,18 @@ class Ad
 
     #[ORM\Column(length: 255)]
     private ?string $Car = null;
+
+    #[ORM\OneToMany(mappedBy: 'Ad', targetEntity: Image::class)]
+    private Collection $images;
+
+    #[ORM\OneToMany(mappedBy: 'Ad', targetEntity: Image::class)]
+    private Collection $del;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+        $this->del = new ArrayCollection();
+    }
 
         /**
      * Permet d'intialiser le slug automatiquement si on ne le donne pas
@@ -136,6 +150,66 @@ class Ad
     public function setCar(string $Car): static
     {
         $this->Car = $Car;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getAd() === $this) {
+                $image->setAd(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getDel(): Collection
+    {
+        return $this->del;
+    }
+
+    public function addDel(Image $del): static
+    {
+        if (!$this->del->contains($del)) {
+            $this->del->add($del);
+            $del->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDel(Image $del): static
+    {
+        if ($this->del->removeElement($del)) {
+            // set the owning side to null (unless already changed)
+            if ($del->getAd() === $this) {
+                $del->setAd(null);
+            }
+        }
 
         return $this;
     }
